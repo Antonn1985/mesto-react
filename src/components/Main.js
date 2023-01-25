@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
 import Card from './Card';
 
 function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick }) {
-  const [userName, setUserName] = useState([]);
-  const [userDescription, setUserDescription] = useState([]);
-  const [userAvatar, setUserAvatar] = useState([]);
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
   const [cards, setCards] = useState([])
 
   useEffect(() => {
@@ -18,7 +18,9 @@ function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick }) {
         setUserAvatar(data.avatar);
         setCards(card)
       })
-      .catch()
+      .catch((err) => {
+        console.log(err);
+      });
   }, [])
 
   return (

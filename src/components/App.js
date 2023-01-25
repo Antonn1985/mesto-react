@@ -38,8 +38,8 @@ function App() {
         onAddPlace={handleAddPlaceClick} onCardClick={setSelectedCard}
       />
       <Footer />
-      {isEditProfilePopupOpen && <PopupWithForm onClose={closeAllPopups} name="name"
-        title="Редактировать профиль" buttonText="Сохранить" isOpen={true}>
+      <PopupWithForm onClose={closeAllPopups} name="name"
+        title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen}>
         <input
           type="text"
           name="userName"
@@ -63,9 +63,8 @@ function App() {
         />
         <span className="form__input-error profession-input-error" />
       </PopupWithForm>
-      }
-      {isAddPlacePopupOpen && <PopupWithForm onClose={closeAllPopups} name="photo"
-        title="Новое место" buttonText="Создать" isOpen={true}>
+      <PopupWithForm onClose={closeAllPopups} name="photo"
+        title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen}>
         <input
           type="text"
           className="form__input form__input_type_picture-name"
@@ -87,9 +86,8 @@ function App() {
         />
         <span className="form__input-error picture-link-input-error" />
       </PopupWithForm>
-      }
-      {isEditAvatarPopupOpen && <PopupWithForm onClose={closeAllPopups} name="avatar"
-        title="Обновить аватар" buttonText="Сохранить" isOpen={true}>
+      <PopupWithForm onClose={closeAllPopups} name="avatar"
+        title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen}>
         <input
           type="url"
           name="avatarLink"
@@ -100,7 +98,6 @@ function App() {
         />
         <span className="form__input-error avatar-link-input-error" />
       </PopupWithForm>
-      }
       <PopupWithForm name="delete" title="Вы уверены?" buttonText="Да">
       </PopupWithForm>
       <ImagePopup card={selectedCard} onClose={closeAllPopups}>
