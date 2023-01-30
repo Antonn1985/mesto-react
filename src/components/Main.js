@@ -4,7 +4,7 @@ import { api } from '../utils/api';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 
-function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick }) {
+function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick, openImagePopup }) {
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
   const [userAvatar, setUserAvatar] = useState('');
@@ -46,7 +46,7 @@ function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick }) {
       <section className="elements page__elements" aria-label="фото">
         {cards.map((card) => {
           return (
-            <Card card={card} key={card._id} onCardClick={onCardClick} />
+            <Card card={card} key={card._id} onCardClick={onCardClick} openImagePopup={openImagePopup} />
           )
         })
         }

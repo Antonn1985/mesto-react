@@ -1,8 +1,9 @@
 import '../index.css';
 
-function ImagePopup({ card, onClose }) {
+function ImagePopup({ card, onClose, isOpen }) {
+
     return (
-        <div className={`popup image-popup ${card && 'popup_opened'}`}>
+        <div className={`popup image-popup ${isOpen ? 'popup_opened' : ''}`}>
             <figure className="image-popup__figure">
                 <button type="button" className="popup__close link" onClick={onClose} />
                 <img className="image-popup__picture" src={card.link} alt={card.name} />

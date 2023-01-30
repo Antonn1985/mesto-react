@@ -1,9 +1,10 @@
 import '../index.css';
 
-function Card({ card, onCardClick }) {
+function Card({ card, onCardClick, openImagePopup }) {
 
     function handleCardClick() {
         onCardClick(card);
+        openImagePopup(true)
     }
 
     return (
