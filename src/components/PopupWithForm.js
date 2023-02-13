@@ -1,6 +1,6 @@
 import '../index.css';
 
-function PopupWithForm({ name, title, buttonText, children, isOpen, onClose }) {
+function PopupWithForm({ name, title, buttonText, children, isOpen, onClose, onSubmit }) {
     return (
         <div className={`popup popup-${name} ${isOpen && 'popup_opened'}`}>
             <div className={`popup__container popup__container-${name}`}>
@@ -11,6 +11,7 @@ function PopupWithForm({ name, title, buttonText, children, isOpen, onClose }) {
                     name={name}
                     className={`form form-${name}`}
                     noValidate=""
+                    onSubmit={onSubmit}
                 >
                     {children}
 

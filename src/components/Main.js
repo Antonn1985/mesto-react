@@ -1,33 +1,18 @@
 import '../index.css';
 import pencil from '../images/pencil.svg'
-import { api } from '../utils/api';
-import { useState, useEffect } from 'react';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import React from 'react';
 
-function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick, openImagePopup }) {
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
-  const [cards, setCards] = useState([])
+function Main({ onEditAvatar, onAddPlacePopup, onEditProfile, onCardClick, openImagePopup, cards, onCardLike, onCardDelete }) {
 
-  useEffect(() => {
-    Promise.all([api.getName(), api.getAllCards()])
-      .then(([data, card]) => {
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar);
-        setCards(card)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [])
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="content">
       <section className="profile page__profile" aria-label="аватар">
         <div className="profile__photo link" onClick={onEditAvatar}>
-          <img className="profile__avatar" src={userAvatar} alt="аватар" />
+          <img className="profile__avatar" src={currentUser.avatar} alt="аватар" />
           <div className="profile__avatar-mask">
             <img
               className="profile__avatar-edit"
@@ -37,16 +22,17 @@ function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick, openImageP
           </div>
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">{userName}</h1>
+          <h1 className="profile__name">{currentUser.name}</h1>
           <button type="button" className="profile__edit-button link" onClick={onEditProfile} />
-          <h2 className="profile__profession">{userDescription}</h2>
+          <h2 className="profile__profession">{currentUser.about}</h2>
         </div>
-        <button type="button" className="profile__add-button link" onClick={onAddPlace} />
+        <button type="button" className="profile__add-button link" onClick={onAddPlacePopup} />
       </section>
       <section className="elements page__elements" aria-label="фото">
         {cards.map((card) => {
           return (
-            <Card card={card} key={card._id} onCardClick={onCardClick} openImagePopup={openImagePopup} />
+            <Card card={card} key={card._id} onCardClick={onCardClick}
+              openImagePopup={openImagePopup} onCardLike={onCardLike} onCardDelete={onCardDelete} />
           )
         })
         }
