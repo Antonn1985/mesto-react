@@ -1,4 +1,3 @@
-import '../index.css';
 import PopupWithForm from './PopupWithForm';
 import React from 'react';
 import { useState } from 'react';

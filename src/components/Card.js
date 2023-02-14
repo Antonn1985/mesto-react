@@ -1,4 +1,3 @@
-import '../index.css';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import React from 'react';
 

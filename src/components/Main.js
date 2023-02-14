@@ -1,4 +1,3 @@
-import '../index.css';
 import pencil from '../images/pencil.svg'
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';

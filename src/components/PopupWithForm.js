@@ -1,5 +1,3 @@
-import '../index.css';
-
 function PopupWithForm({ name, title, buttonText, children, isOpen, onClose, onSubmit }) {
     return (
         <div className={`popup popup-${name} ${isOpen && 'popup_opened'}`}>
